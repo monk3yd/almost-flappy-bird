@@ -24,9 +24,9 @@ function PipePair:init(y)
     -- y value is for the topmost pipe; gap is a vertical shift of the second lower pipe
     self.y = y
 
-    -- # TODO - size of the gap between pipes
+    -- # TODO - size of the gap between pipes (Vertical Gap)
     gap_height = love.math.random(GAP_HEIGHT_MIN, GAP_HEIGHT_MAX)
-    print("Gap Height: ".. gap_height)
+    print("Vertical Gap: ".. gap_height)
 
     -- instantiate two pipes that belong to this pair
     self.pipes = {

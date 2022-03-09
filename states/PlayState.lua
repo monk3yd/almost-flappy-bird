@@ -17,7 +17,7 @@ PIPE_HEIGHT = 288
 BIRD_WIDTH = 38
 BIRD_HEIGHT = 24
 
--- # TODO - Control Pipe Flow
+-- # TODO - Control Pipe Flow (Horizontal Gap)
 pipe_flow_control = 2
 
 function PlayState:init()
@@ -41,7 +41,6 @@ function PlayState:init()
 
         -- spawn a new pipe pair every second and a half
         if self.timer > pipe_flow_control then
-            print(pipe_flow_control)
             -- modify the last Y coordinate we placed so pipe gaps aren't too far apart
             -- no higher than 10 pixels below the top edge of the screen,
             -- and no lower than a gap length (90 pixels) from the bottom
@@ -55,7 +54,7 @@ function PlayState:init()
             -- reset timer
             self.timer = 0
             pipe_flow_control = math.random(2, 4)
-            print("Next spawn in " .. pipe_flow_control .. " seconds")
+            print("Horizontal Gap " .. tostring(pipe_flow_control) .. " seconds")
     
         end
     
@@ -115,15 +114,16 @@ function PlayState:init()
 end
 
 function PlayState:update(dt)
-    -- # TODO - PlayState to PauseState when P is pressed
     if love.keyboard.wasPressed('p') then
-        -- # TODO - Pause Flow
+        -- # TODO - Pause Music Flow
         if self.paused == false then
             self.paused = true
+            print("Pause")
             sounds['pause']:play()
             sounds['music']:pause()
         else
             self.paused = false
+            print("Unpause")
             sounds['music']:play()
         end
     end
