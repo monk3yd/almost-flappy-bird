@@ -16,6 +16,27 @@ ScoreState = Class{__includes = BaseState}
 ]]
 function ScoreState:enter(params)
     self.score = params.score
+
+    -- # TODO - Add Trophies -- Put inside functions input score output image (?)
+    if self.score >= 5 then
+        -- Render Gold Image
+        self.medal = love.graphics.newImage('gold_medal.png')
+        print("Won the Gold Medal!")
+    elseif self.score <= 4 and self.score >= 3 then
+        -- Render Silver Image
+        self.medal = love.graphics.newImage('silver_medal.png')
+        print("Won the Silver Medal!")
+    elseif self.score <= 2 and self.score >= 1 then
+        -- Render Bronze Image
+        self.medal = love.graphics.newImage('bronze_medal.png')
+        print("Won the Bronze Medal!")
+    else
+        print("No trophy :(")
+    end
+
+    self.x = VIRTUAL_WIDTH - 220
+    self.y = 100
+
 end
 
 function ScoreState:update(dt)
@@ -33,9 +54,10 @@ function ScoreState:render()
     love.graphics.setFont(mediumFont)
     love.graphics.printf('Score: ' .. tostring(self.score), 0, 100, VIRTUAL_WIDTH, 'center')
 
-
-    -- # TODO - Call Trophy Class for Render and pass in the score
-    
+    -- # TODO - Draw Trophy
+    if self.score >= 2 then
+        love.graphics.draw(self.medal, self.x, self.y, 0, 0.1, 0.1)
+    end
 
     love.graphics.printf('Press Enter to Play Again!', 0, 160, VIRTUAL_WIDTH, 'center')
 end

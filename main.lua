@@ -35,6 +35,8 @@ require 'StateMachine'
 -- all states our StateMachine can transition between
 require 'states/BaseState'
 require 'states/CountdownState'
+-- # TODO - Import Pause State
+-- require 'states/PauseState'
 require 'states/PlayState'
 require 'states/ScoreState'
 require 'states/TitleScreenState'
@@ -107,6 +109,7 @@ function love.load()
         ['countdown'] = function() return CountdownState() end,
         ['play'] = function() return PlayState() end,
         ['score'] = function() return ScoreState() end
+        -- ['pause'] = function() return PauseState() end,  -- # TODO - Add PauseState func
     }
     gStateMachine:change('title')
 
@@ -128,6 +131,7 @@ function love.keypressed(key)
     if key == 'escape' then
         love.event.quit()
     end
+
 end
 
 --[[
