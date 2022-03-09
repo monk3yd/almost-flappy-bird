@@ -82,11 +82,13 @@ function love.load()
     love.graphics.setFont(flappyFont)
 
     -- initialize our table of sounds
+    -- # TODO - Pausing Sound Effect and Pause Music
     sounds = {
         ['jump'] = love.audio.newSource('jump.wav', 'static'),
         ['explosion'] = love.audio.newSource('explosion.wav', 'static'),
         ['hurt'] = love.audio.newSource('hurt.wav', 'static'),
         ['score'] = love.audio.newSource('score.wav', 'static'),
+        ['pause'] = love.audio.newSource('pause.wav', 'static'),
 
         -- https://freesound.org/people/xsgianni/sounds/388079/
         ['music'] = love.audio.newSource('marios_way.mp3', 'static')

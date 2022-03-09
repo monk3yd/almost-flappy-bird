@@ -120,8 +120,11 @@ function PlayState:update(dt)
         -- # TODO - Pause Flow
         if self.paused == false then
             self.paused = true
+            sounds['pause']:play()
+            sounds['music']:pause()
         else
             self.paused = false
+            sounds['music']:play()
         end
     end
     
